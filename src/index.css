@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #121212;
+  /* background-color: #121212; */
   color: white;
   margin: 0;
   padding: 0;
@@ -8,9 +8,19 @@ body {
   justify-content: center;
 }
 
+body.dark-theme {
+  background-color: #121212; 
+  color: #fff; 
+}
+
+body.light-theme {
+  background-color: white;
+}
+
 .container {
   max-width: 800px;
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .title {
@@ -30,6 +40,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .movie-poster {
@@ -49,3 +60,13 @@ body {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+.light-theme {
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.container.light-theme .movie-card {
+  background: #f4f4f4;
+  box-shadow: 10px 15px 8px rgba(0, 0, 0, 0.1);
+} 

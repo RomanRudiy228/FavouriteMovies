@@ -1,6 +1,7 @@
 import React from "react";
 import RateSwitch from "./RateSwitch";
 import Pagination from "./Pagination";
+import ThemeButton from "./ThemeButton";
 
 const API_KEY = "8653ef2efa68ca7761a600d93289521b"; 
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
@@ -12,6 +13,7 @@ class MoviesList extends React.Component {
             movies: [],
             currentPage: 1,
             totalPages: 1,
+            isDarkTheme: true,
         };
     }
 
@@ -38,10 +40,17 @@ class MoviesList extends React.Component {
         }
       };
 
+      toggleTheme = () => {
+        this.setState((prevState) => ({ isDarkTheme: !prevState.isDarkTheme }));
+      };
+
       render() {
+        const { isDarkTheme } = this.state;
+
         return (
-            <div className="container">
+            <div className={`container ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
                 <h1 className="title">Favourite Movies</h1>
+                <ThemeButton isDarkTheme={isDarkTheme} toggleTheme={this.toggleTheme} />
                 <div className="movies-list">
                     { this.state.movies.map((movie) => (
                         <div key={ movie.id } className="movie-card">
