@@ -1,0 +1,26 @@
+.rate-switch {
+    cursor: pointer;
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border: 1px solid #ffcc00;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .rate-switch:hover {
+    background-color: #ffcc00;
+    color: #121212;
+  }
+  
+  .rate-value {
+    margin-right: 8px;
+  }
+  
+  .toggle-text {
+    color: #ffcc00;
+    font-size: 0.9rem;
+  }
+  
