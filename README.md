@@ -22,10 +22,13 @@ Builds the app for production to the `build` folder.\
 ### 🔧 Technologies Used
 
 Frontend: HTML, CSS, React
+
 Icons: Flaticon 
 
 ### 🔥 Features
 
 Check movies by popularity
+
 View rating popular movies
+
 Change theme
