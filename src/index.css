@@ -38,7 +38,7 @@ body.light-theme {
   background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 5px rgba(255, 255, 255, 0.1);
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -51,6 +51,12 @@ body.light-theme {
   width: 150px;
   height: auto;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.movie-poster:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 .movie-info {
