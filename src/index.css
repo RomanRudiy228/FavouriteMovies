@@ -40,7 +40,6 @@ body.light-theme {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   transition: background 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
 }
 
 .movie-card:hover {
@@ -51,6 +50,7 @@ body.light-theme {
 .movie-poster {
   width: 150px;
   height: auto;
+  cursor: pointer;
 }
 
 .movie-info {
