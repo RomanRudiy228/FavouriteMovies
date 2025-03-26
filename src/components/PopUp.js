@@ -1,24 +1,19 @@
 import React from "react";
-import "./PopUp.css"
+import "./PopUp.css";
 
-class PopUp extends React.Component {
-    render() {
-        const { releaseDate, closePopUp } = this.props;
-
-        if (!releaseDate) {
-            return "No release date";
-        }
-
-        return (
-            <div className="popup-overlay" onClick={closePopUp}>
-                <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                    <p>Release Date: {releaseDate}</p>
-                    <div className="close-btn" onClick={ closePopUp }>Close</div>
-                </div>
-            </div>
-
-        );
+const PopUp = ({ releaseDate, closePopUp }) => {
+    if (!releaseDate) {
+        return "No release date";
     }
-}
 
-export default PopUp
+    return (
+        <div className="popup-overlay" onClick={closePopUp}>
+            <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                <p>Release Date: {releaseDate}</p>
+                <div className="close-btn" onClick={closePopUp}>Close</div>
+            </div>
+        </div>
+    );
+};
+
+export default PopUp;

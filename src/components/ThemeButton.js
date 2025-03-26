@@ -3,30 +3,16 @@ import "./ThemeButton.css";
 import SunIcon from "../Images/sun2.png";
 import MoonIcon from "../Images/moon.png";
 
-class ThemeButton extends React.Component {
-    handletoggle = () => {
-        this.props.toggleTheme();
-    };
-
-    render() {
-        const { isDarkTheme } = this.props;
-
-        if (isDarkTheme) {
-            document.body.classList.add('dark-theme');
-        } else {
-            document.body.classList.remove('dark-theme');
-        }
-
-        return (
-            <button className="theme-switcher" onClick={this.handletoggle}>
-                <img 
+const ThemeButton = ({ isDarkTheme, toggleTheme }) => {
+    return (
+        <button className="theme-switcher" onClick={toggleTheme}>
+            <img 
                 src={isDarkTheme ? MoonIcon : SunIcon}
-                alt={isDarkTheme ? 'Moon' : 'Sun'}
+                alt={isDarkTheme ? "Moon" : "Sun"}
                 className="theme-icon"
-                />
-            </button>
-        );
-    }
-}
+            />
+        </button>
+    );
+};
 
 export default ThemeButton;

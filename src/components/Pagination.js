@@ -1,28 +1,18 @@
 import React from "react";
-import "./Pagination.css"
+import "./Pagination.css";
 
-class Pagination extends React.Component {
-    render() {
-        const { currentPage, totalPages, onPageChange } = this.props;
-
-        return (
-            <div className="pagination">
-                <button
-                    onClick={ () => onPageChange(currentPage - 1) }
-                    disabled={ currentPage === 1 }
-                >
-                    Previous Page
-                </button>
-                <span>Page {currentPage} of {totalPages}</span>
-                <button 
-                    onClick={ () => onPageChange(currentPage + 1) }
-                    disabled={ currentPage === totalPages}
-                >
-                    Next Page
-                </button>
-            </div> 
-        );
-    }
-}
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    return (
+        <div className="pagination">
+            <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+                Previous Page
+            </button>
+            <span>Page {currentPage} of {totalPages}</span>
+            <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                Next Page
+            </button>
+        </div> 
+    );
+};
 
 export default Pagination;

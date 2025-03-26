@@ -1,35 +1,21 @@
-import React from "react";
-import "./RateSwitch.css"
+import React, { useState } from "react";
+import "./RateSwitch.css";
 
-class RateSwitch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showRate: false,
-        };
-    }
+const RateSwitch = ({ rate }) => {
+    const [showRate, setShowRate] = useState(false);
 
-    toggleRate = () => {
-        this.setState((prevState) => ({
-            showRate: !prevState.showRate,
-        }));
-    };
-
-    render() {
-        return (
-            <div className="rate-switch" onClick={ this.toggleRate }>
-                { this.state.showRate ? (
-                    <>
-                    <span className="rate-value">
-                        {this.props.rate}</span>
+    return (
+        <div className="rate-switch" onClick={() => setShowRate(!showRate)}>
+            {showRate ? (
+                <>
+                    <span className="rate-value">{rate}</span>
                     <span className="toggle-text">Hide Rate</span>
-                    </>
-                ) : (
-                    "Show Rate"
-                )}
-            </div>
-        );
-    }
-}
+                </>
+            ) : (
+                "Show Rate"
+            )}
+        </div>
+    );
+};
 
 export default RateSwitch;
