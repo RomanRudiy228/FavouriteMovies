@@ -1,5 +1,5 @@
 import React from "react";
-import "./PopUp.css";
+import "./styles/PopUp.css";
 
 const PopUp = ({ releaseDate, closePopUp }) => {
     if (!releaseDate) {

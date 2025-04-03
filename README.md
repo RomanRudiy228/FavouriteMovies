@@ -1,5 +1,7 @@
 ### 📽️ FavouriteMovies
 
+![WebSite img](image.png)
+
 FavouriteMovies is a web application for searching movies, viewing popular films, and managing a list of favorite movies. Users can search for movies by keywords, view details, and add movies to their favorites list.
 
 ## Available Scripts
@@ -29,6 +31,10 @@ Icons: Flaticon
 
 Check movies by popularity
 
-View rating popular movies
+View rating popular movies onClick Icon 
 
 Change theme
+
+Navigation for pages 
+
+Pagination

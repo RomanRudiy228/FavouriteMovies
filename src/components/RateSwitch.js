@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./RateSwitch.css";
+import "./styles/RateSwitch.css";
 
 const RateSwitch = ({ rate }) => {
     const [showRate, setShowRate] = useState(false);
