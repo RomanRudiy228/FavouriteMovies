@@ -4,11 +4,15 @@ import Pagination from "./Pagination";
 import ThemeButton from "./ThemeButton";
 import PopUp from "./PopUp";
 import useFetchMovies from "./useFetchMovies";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../store/themeReducer";
 
 const MoviesList = ( { apiURL, title } ) => {
     const { data: movies, total, currentPage, setCurrentPage } = useFetchMovies(apiURL);
-    const [isDarkTheme, setIsDarkTheme] = useState(() => localStorage.getItem("theme") === "dark");
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    const dispatch = useDispatch();
+    const isDarkTheme = useSelector((state) => state.theme.mode === "dark");
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
@@ -21,18 +25,17 @@ const MoviesList = ( { apiURL, title } ) => {
         } else {
             document.body.classList.remove("dark-theme");
         }
-        localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
     }, [isDarkTheme]);
 
-    const toggleTheme = () => {
-        setIsDarkTheme((prevTheme) => !prevTheme);
+    const handleThemeToggle = () => {
+        dispatch(toggleTheme());
     };
 
     return (
         <div className="main-container">
             <div className={`container ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
                 <h1 className="title">{title}</h1>
-                <ThemeButton isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+                <ThemeButton isDarkTheme={isDarkTheme} toggleTheme={handleThemeToggle} />
                 {currentPage > 1 && (
                     <Pagination 
                         currentPage={currentPage}
