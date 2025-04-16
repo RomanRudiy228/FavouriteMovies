@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../store/themeReducer";
 import Loader from "./Loader";
 import { fetchMoviesList } from "../store/fetchMoviesList";
+import { setCurrentPage } from "../store/moviesReducer";
 
 
 const MoviesList = ( { apiURL, title } ) => {
@@ -16,7 +17,7 @@ const MoviesList = ( { apiURL, title } ) => {
     const movies = useSelector((state) => state.movies.list);
     const isLoading = useSelector((state) => state.movies.isLoading);
     const total = useSelector((state) => state.movies.total);
-    const [currentPage, setCurrentPage] = useState(1);
+    const currentPage = useSelector((state) => state.movies.currentPage);
     const isDarkTheme = useSelector((state) => state.theme.mode === "dark");
 
     useEffect(() => {
@@ -53,7 +54,7 @@ const MoviesList = ( { apiURL, title } ) => {
                     <Pagination 
                         currentPage={currentPage}
                         totalPages={total}
-                        onPageChange={setCurrentPage}
+                        onPageChange={(page) => dispatch(setCurrentPage(page))}
                     /> 
                 )}
                     <div className="movies-list">
@@ -76,7 +77,7 @@ const MoviesList = ( { apiURL, title } ) => {
                     <Pagination 
                         currentPage={currentPage}
                         totalPages={total}
-                        onPageChange={setCurrentPage}
+                        onPageChange={(page) => dispatch(setCurrentPage(page))}
                     />
                 </>
                 )}

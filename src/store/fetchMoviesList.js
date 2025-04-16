@@ -1,8 +1,8 @@
 import { setMovies, setLoading, setError } from "./moviesReducer";
 
-export const fetchMoviesList = (apiURL) => async (dispatch) => {
+export const fetchMoviesList = (page = 1) => async (dispatch) => {
     const API_KEY = "8653ef2efa68ca7761a600d93289521b";
-    const apiURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&`;
+    const apiURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
 
     try {
         dispatch(setLoading(true));
