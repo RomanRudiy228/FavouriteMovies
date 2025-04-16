@@ -3,16 +3,25 @@ import RateSwitch from "./RateSwitch";
 import Pagination from "./Pagination";
 import ThemeButton from "./ThemeButton";
 import PopUp from "./PopUp";
-import useFetchMovies from "./useFetchMovies";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../store/themeReducer";
+import Loader from "./Loader";
+import { fetchMoviesList } from "../store/fetchMoviesList";
+
 
 const MoviesList = ( { apiURL, title } ) => {
-    const { data: movies, total, currentPage, setCurrentPage } = useFetchMovies(apiURL);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     const dispatch = useDispatch();
+    const movies = useSelector((state) => state.movies.list);
+    const isLoading = useSelector((state) => state.movies.isLoading);
+    const total = useSelector((state) => state.movies.total);
+    const [currentPage, setCurrentPage] = useState(1);
     const isDarkTheme = useSelector((state) => state.theme.mode === "dark");
+
+    useEffect(() => {
+        dispatch(fetchMoviesList(`${apiURL}&page=${currentPage}`));
+    }, [apiURL, currentPage, dispatch]);
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
@@ -35,13 +44,18 @@ const MoviesList = ( { apiURL, title } ) => {
         <div className="main-container">
             <div className={`container ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
                 <h1 className="title">{title}</h1>
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <>
                 <ThemeButton isDarkTheme={isDarkTheme} toggleTheme={handleThemeToggle} />
                 {currentPage > 1 && (
                     <Pagination 
                         currentPage={currentPage}
                         totalPages={total}
                         onPageChange={setCurrentPage}
-                    /> )}
+                    /> 
+                )}
                     <div className="movies-list">
                         {movies.map((movie) => (
                             <div key={movie.id} className="movie-card">
@@ -64,6 +78,8 @@ const MoviesList = ( { apiURL, title } ) => {
                         totalPages={total}
                         onPageChange={setCurrentPage}
                     />
+                </>
+                )}
                 </div>
             {selectedMovie && <PopUp releaseDate={selectedMovie.release_date} closePopUp={() => setSelectedMovie(null)} />}
         </div>    

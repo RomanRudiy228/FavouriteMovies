@@ -5,7 +5,9 @@ const moviesSlice = createSlice({
   initialState: {
     list: [],
     total: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: false,
+    error: null
   },
   reducers: {
     setMovies: (state, action) => {
@@ -14,9 +16,15 @@ const moviesSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
-    }
-  }
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
+  },
 });
 
-export const { setMovies, setCurrentPage } = moviesSlice.actions;
+export const { setMovies, setCurrentPage, setLoading, setError } = moviesSlice.actions;
 export default moviesSlice.reducer;
